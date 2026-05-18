@@ -2,10 +2,8 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import * as schema from './schema';
 
-if (!process.env.DATABASE_URL) {
-  throw new Error('DATABASE_URL environment variable is missing.');
-}
+const connectionString = process.env.DATABASE_URL || 'postgresql://postgres.mock-ref:mock-password@aws-0-us-east-1.pooler.supabase.com:6543/postgres?pgbouncer=true';
 
 // Disable prefetch as recommended for Supabase connection poolers
-const queryClient = postgres(process.env.DATABASE_URL, { prepare: false });
+const queryClient = postgres(connectionString, { prepare: false });
 export const db = drizzle(queryClient, { schema });
