@@ -16,6 +16,6 @@ describe('Supabase Database Plant Operations', () => {
     const result = await db.insert(plants).values(mockPlant);
     
     expect(db.insert).toHaveBeenCalledWith(plants);
-    expect(result[0].name).toBe('Fern');
+    expect((result as any)[0].name).toBe('Fern');
   });
 });
