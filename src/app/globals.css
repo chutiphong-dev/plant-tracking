@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 140 20% 98%;
+    --foreground: 140 40% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 140 40% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 140 40% 12%;
+
+    --primary: 152 70% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 140 20% 93%;
+    --secondary-foreground: 140 45% 15%;
+
+    --muted: 140 10% 90%;
+    --muted-foreground: 140 15% 40%;
+
+    --accent: 152 65% 90%;
+    --accent-foreground: 152 70% 25%;
+
+    --border: 140 15% 88%;
+    --input: 140 15% 88%;
+    --ring: 152 70% 32%;
+
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 150 25% 6%;
+    --foreground: 140 20% 95%;
+
+    --card: 150 20% 9%;
+    --card-foreground: 140 20% 95%;
+
+    --popover: 150 25% 6%;
+    --popover-foreground: 140 20% 95%;
+
+    --primary: 152 65% 45%;
+    --primary-foreground: 150 25% 6%;
+
+    --secondary: 150 15% 14%;
+    --secondary-foreground: 140 20% 90%;
+
+    --muted: 150 15% 14%;
+    --muted-foreground: 140 10% 65%;
+
+    --accent: 152 50% 18%;
+    --accent-foreground: 152 65% 85%;
+
+    --border: 150 15% 16%;
+    --input: 150 15% 16%;
+    --ring: 152 65% 45%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(152, 60%, 40%, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(160, 50%, 30%, 0.05) 0px, transparent 50%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.dark .glass-panel {
+  background: rgba(14, 25, 20, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Premium Card hover effects */
+.hover-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.15);
+  border-color: hsla(var(--primary), 0.3);
+}
+
+.dark .hover-card:hover {
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.4);
+  border-color: hsla(var(--primary), 0.4);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
