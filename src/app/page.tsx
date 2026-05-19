@@ -37,19 +37,16 @@ import {
 const t = {
   en: {
     title: 'Holographic Workspace',
-    subtitle: 'Gaze, trigger, and optimize care schedules dynamically.',
+    subtitle: 'Gaze, log observations, and track daily notes seamlessly.',
     sandboxTitle: 'Apple Vision Pro Spatial Sandbox',
     sandboxDesc: 'Pre-seeded with your exact Thai garden plants from your spreadsheet.',
     sandboxBadge: 'DATABASE: OFFLINE BACKUP',
     searchPlaceholder: 'Gaze Search...',
     totalCollection: 'Total Collection',
-    thirsty: 'Thirsty',
-    feedDue: 'Feed Due',
-    healthyState: 'Healthy State',
+    wateredToday: 'Watered Today',
+    fertilizedToday: 'Fertilized Today',
+    trackedPlants: 'Tracked Companions',
     tabAll: 'All Companions',
-    tabThirsty: 'Thirsty',
-    tabFeedDue: 'Feed Due',
-    tabHealthy: 'Healthy',
     showingPlants: 'Showing {count} of {total} plants',
     noPlantsTitle: 'Garden is Clean',
     noPlantsDesc: 'Gaze filters or search query did not yield matches.',
@@ -79,7 +76,7 @@ const t = {
     diagActive: 'Client integration is active and operating perfectly.',
     diagBack: 'Back to Holograms',
     hologramTitle: 'Active Hologram',
-    hologramSubtitle: 'Care Diagnostic Panel',
+    hologramSubtitle: 'Daily Care Tracker',
     formulaReq: 'Formula Requirement',
     waterSchedule: 'Water Schedule',
     feedSchedule: 'Feed Schedule',
@@ -91,12 +88,12 @@ const t = {
     dueToday: 'Due today!',
     overdue: 'Overdue: {days}d 🚨',
     inDays: 'In {days} days',
-    logActionBtn: 'Log Custom Action',
-    logTimelineTitle: 'Diagnostic Log Timeline',
-    noLogs: 'No diagnostics available for this holographic node.',
+    logActionBtn: 'Log Care Note',
+    logTimelineTitle: 'Care Observation Timeline',
+    noLogs: 'No observations recorded for this companion.',
     noNodeSelected: 'No node selected',
     gazeSelect: 'Gaze and select a holographic companion.',
-    modalTitle: 'Diagnose Care Action',
+    modalTitle: 'Add Care Observation',
     modalSubtitle: 'Append a custom record to the {name} hologram.',
     modalCareType: 'Care Type',
     modalNotes: 'Care Notes / Remarks',
@@ -105,24 +102,29 @@ const t = {
     logFeed: 'Fertilizer/Feeding 🧪',
     logPrune: 'Pruning/Trimming ✂️',
     logRepot: 'Repotting 🪴',
+    logNote: 'General Note 📝',
     logWatered: 'Watered',
     logFertilized: 'Fertilized',
+    lastWatered: 'Last Watered',
+    lastFertilized: 'Last Fertilized',
+    dailyTrackTitle: 'Daily Care & Notes',
+    dailyTrackSubtitle: 'Record daily notes, watering, or pruning actions directly.',
+    selectCareType: 'Activity Type',
+    enterObsNote: 'Write observation or health note here...',
+    btnSubmitTrack: 'Save Companion Note 🪴',
   },
   th: {
     title: 'ห้องทำงานโฮโลแกรม',
-    subtitle: 'ค้นหา รดน้ำ ใส่ปุ๋ย และติดตามสถานะต้นไม้ของคุณในรูปแบบ 3 มิติ',
+    subtitle: 'บันทึกภาพ สังเกตสภาพ และติดตามประวัติการดูแลพืชพรรณรายวัน',
     sandboxTitle: 'ระบบจำลองพื้นที่ Apple Vision Pro',
     sandboxDesc: 'โหลดข้อมูลสวนไทยที่ตรงตามตารางเอ็กเซลของคุณไว้เรียบร้อยแล้ว',
     sandboxBadge: 'ฐานข้อมูล: สำรองออฟไลน์',
     searchPlaceholder: 'ใช้สายตาค้นหา...',
-    totalCollection: 'จำนวนทั้งหมด',
-    thirsty: 'ขาดน้ำ',
-    feedDue: 'ควรใส่ปุ๋ย',
-    healthyState: 'สมบูรณ์ดี',
+    totalCollection: 'จำนวนพืชทั้งหมด',
+    wateredToday: 'รดน้ำแล้ววันนี้',
+    fertilizedToday: 'ใส่ปุ๋ยแล้ววันนี้',
+    trackedPlants: 'พืชที่มีประวัติบำรุง',
     tabAll: 'ต้นไม้ทั้งหมด',
-    tabThirsty: 'ขาดน้ำ',
-    tabFeedDue: 'ครบกำหนดปุ๋ย',
-    tabHealthy: 'สมบูรณ์ดี',
     showingPlants: 'แสดง {count} จากทั้งหมด {total} ต้น',
     noPlantsTitle: 'สวนของคุณเรียบร้อยดี',
     noPlantsDesc: 'ไม่พบต้นไม้ตามตัวกรองที่เลือก',
@@ -134,7 +136,7 @@ const t = {
     waterQuickLog: 'รดน้ำด่วน',
     feedQuickLog: 'ใส่ปุ๋ยด่วนสูตร: {formula}',
     registerTitle: 'ลงทะเบียนสมาชิกสวนใหม่',
-    registerSubtitle: 'เพิ่มต้นไม้ ต้นกล้า หรือพืชอินทรีย์ใหม่ลงในรายการของคุณ',
+    registerSubtitle: 'เพิ่มต้นไม้ ต้นกล้า หรือพืชอินทรีย์ใหม่ลงในรายการของคุณโดยไม่ต้องกำหนดแผนล่วงหน้า',
     formCommonName: 'ชื่อต้นไม้ (Common Name)',
     formNickname: 'ชื่อเล่น / บันทึกเพิ่มเติม',
     formCategory: 'ประเภทพืช (Category)',
@@ -145,17 +147,17 @@ const t = {
     formCancel: 'ยกเลิก',
     formRegister: 'บันทึกต้นไม้ใหม่ 🪴',
     diagTitle: 'ระบบวินิจฉัยพื้นที่',
-    diagSubtitle: 'จัดการตารางสวนโฮโลแกรมและตรวจสอบการเชื่อมต่อฐานข้อมูล',
+    diagSubtitle: 'จัดการสวนโฮโลแกรมและตรวจสอบการเชื่อมต่อฐานข้อมูล',
     diagProjRef: 'รหัสโครงการที่เชื่อมต่อ (Project Ref)',
     diagApiGateway: 'เกตเวย์ข้อมูล Supabase API',
     diagStatus: 'สถานะการเชื่อมต่อ',
     diagActive: 'ระบบเชื่อมต่อเกตเวย์ทำงานได้อย่างสมบูรณ์',
     diagBack: 'กลับหน้าโฮโลแกรม',
     hologramTitle: 'โฮโลแกรมหลัก',
-    hologramSubtitle: 'แผงควบคุมและประเมินผลรักษาพืช',
-    formulaReq: 'สูตรปุ๋ยที่ต้องการ',
-    waterSchedule: 'รอบการรดน้ำ',
-    feedSchedule: 'รอบการใส่ปุ๋ย',
+    hologramSubtitle: 'แผงบันทึกการดูแลรายวัน',
+    formulaReq: 'สูตรปุ๋ยบำรุง',
+    waterSchedule: 'ประวัติรดน้ำ',
+    feedSchedule: 'ประวัติใส่ปุ๋ย',
     lastWater: 'รดน้ำล่าสุด: {time}',
     lastFeed: 'ใส่ปุ๋ยล่าสุด: {time}',
     never: 'ยังไม่เคย',
@@ -164,13 +166,13 @@ const t = {
     dueToday: 'ครบกำหนดวันนี้!',
     overdue: 'เลยกำหนดมาแล้ว {days} วัน! 🚨',
     inDays: 'ในอีก {days} วัน',
-    logActionBtn: 'บันทึกการดูแลรักษา',
-    logTimelineTitle: 'ประวัติการบำรุงรักษาพืช',
-    noLogs: 'ยังไม่มีประวัติการดูแลสำหรับต้นไม้นี้',
+    logActionBtn: 'บันทึกประวัติการดูแล',
+    logTimelineTitle: 'ประวัติการดูแลพืช',
+    noLogs: 'ยังไม่มีบันทึกข้อมูลการดูแลพืชนี้',
     noNodeSelected: 'ไม่ได้เลือกโฮโลแกรม',
-    gazeSelect: 'กรุณาเลือกต้นไม้เพื่อเปิดระบบโฮโลแกรม',
-    modalTitle: 'บันทึกการดูแลรักษาพืช',
-    modalSubtitle: 'เพิ่มบันทึกกิจกรรมดูแลลงในประวัติของ {name}',
+    gazeSelect: 'กรุณาเลือกต้นไม้เพื่อเปิดระบบบันทึกและประเมินผล',
+    modalTitle: 'เพิ่มบันทึกกิจกรรมดูแล',
+    modalSubtitle: 'เพิ่มบันทึกกิจกรรมลงในประวัติของ {name}',
     modalCareType: 'ประเภทกิจกรรม',
     modalNotes: 'บันทึกเพิ่มเติม / รายละเอียด',
     modalLogEntry: 'บันทึกกิจกรรมการดูแล',
@@ -178,8 +180,16 @@ const t = {
     logFeed: 'การใส่ปุ๋ย 🧪',
     logPrune: 'การตัดแต่งกิ่ง ✂️',
     logRepot: 'การเปลี่ยนกระถาง 🪴',
+    logNote: 'บันทึกทั่วไป 📝',
     logWatered: 'รดน้ำเสร็จสิ้น',
     logFertilized: 'ใส่ปุ๋ยเสร็จสิ้น',
+    lastWatered: 'รดน้ำล่าสุด',
+    lastFertilized: 'ใส่ปุ๋ยล่าสุด',
+    dailyTrackTitle: 'บันทึกการดูแลวันนี้',
+    dailyTrackSubtitle: 'บันทึกการสังเกต รดน้ำ หรือตัดแต่งกิ่งด้วยตนเองรายวัน',
+    selectCareType: 'ประเภทกิจกรรมดูแล',
+    enterObsNote: 'เขียนบันทึกสุขภาพพืชหรือรายละเอียดดูแลที่นี่...',
+    btnSubmitTrack: 'บันทึกประวัติพืชพรรณ 🪴',
   }
 };
 
@@ -208,7 +218,7 @@ export default function DashboardPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   // Active Navigation & Filters
-  const [activeTab, setActiveTab] = useState<'all' | 'thirsty' | 'hungry' | 'healthy'>('all');
+  const [activeTab, setActiveTab] = useState<string>('all');
   const [isLogsPanelOpen, setIsLogsPanelOpen] = useState(false);
   const [logNotes, setLogNotes] = useState('');
   const [logType, setLogType] = useState('water');
@@ -410,21 +420,29 @@ export default function DashboardPage() {
     e.currentTarget.style.setProperty('--y', `${y}px`);
   };
 
+  // Helper to check if a date is within "today"
+  const isCaredToday = (dateStr?: Date | string) => {
+    if (!dateStr) return false;
+    const date = new Date(dateStr);
+    const today = new Date();
+    return date.toDateString() === today.toDateString();
+  };
+
   // Stats calculation
   const totalPlantsCount = plantsList.length;
-  const thirstyCount = plantsList.filter(isThirsty).length;
-  const hungryCount = plantsList.filter(isHungry).length;
-  const healthyCount = plantsList.filter(p => !isThirsty(p) && !isHungry(p)).length;
+  const wateredTodayCount = plantsList.filter(p => isCaredToday(p.lastWateredAt)).length;
+  const fertilizedTodayCount = plantsList.filter(p => isCaredToday(p.lastFertilizedAt)).length;
+  const trackedCompanionsCount = plantsList.filter(p => p.lastWateredAt || p.lastFertilizedAt).length;
 
-  // Filtering list based on search and tab selection
+  // Filtering list based on search and tab selection (by category)
   const filteredPlants = plantsList.filter(p => {
     const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           (p.nickname && p.nickname.toLowerCase().includes(searchQuery.toLowerCase()));
     if (!matchesSearch) return false;
 
-    if (activeTab === 'thirsty') return isThirsty(p);
-    if (activeTab === 'hungry') return isHungry(p);
-    if (activeTab === 'healthy') return !isThirsty(p) && !isHungry(p);
+    if (activeTab !== 'all') {
+      return p.category === activeTab;
+    }
     return true;
   });
 
@@ -567,25 +585,25 @@ export default function DashboardPage() {
                 </div>
                 <div className="p-4 rounded-3xl vision-glass flex flex-col justify-between h-24 hover:scale-[1.02] transition-transform">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest leading-none">{currentT.thirsty}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping" />
+                    <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest leading-none">{currentT.wateredToday}</span>
+                    {wateredTodayCount > 0 && <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping" />}
                   </div>
-                  <span className="text-3xl font-extrabold font-mono mt-1 text-blue-400">{thirstyCount}</span>
+                  <span className="text-3xl font-extrabold font-mono mt-1 text-blue-400">{wateredTodayCount}</span>
                 </div>
                 <div className="p-4 rounded-3xl vision-glass flex flex-col justify-between h-24 hover:scale-[1.02] transition-transform">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold text-amber-500 uppercase tracking-widest leading-none">{currentT.feedDue}</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping" />
+                    <span className="text-[10px] font-bold text-amber-500 uppercase tracking-widest leading-none">{currentT.fertilizedToday}</span>
+                    {fertilizedTodayCount > 0 && <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping" />}
                   </div>
-                  <span className="text-3xl font-extrabold font-mono mt-1 text-amber-500">{hungryCount}</span>
+                  <span className="text-3xl font-extrabold font-mono mt-1 text-amber-500">{fertilizedTodayCount}</span>
                 </div>
                 <div className="p-4 rounded-3xl vision-glass flex flex-col justify-between h-24 hover:scale-[1.02] transition-transform">
-                  <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest leading-none">{currentT.healthyState}</span>
-                  <span className="text-3xl font-extrabold font-mono mt-1 text-emerald-400">{healthyCount}</span>
+                  <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest leading-none">{currentT.trackedPlants}</span>
+                  <span className="text-3xl font-extrabold font-mono mt-1 text-emerald-400">{trackedCompanionsCount}</span>
                 </div>
               </section>
 
-              {/* Dynamic Quick Filters */}
+              {/* Dynamic Quick Filters (Category-based) */}
               <div className="flex bg-white/5 p-1 rounded-full border border-white/5 w-full sm:w-fit items-center gap-1 overflow-x-auto scrollbar-none whitespace-nowrap">
                 <button
                   id="tab-all"
@@ -596,42 +614,51 @@ export default function DashboardPage() {
                       : 'text-gray-300 hover:text-white hover:bg-white/5'
                   }`}
                 >
-                  {currentT.tabAll}
+                  {lang === 'en' ? 'All Companions' : 'ทั้งหมด'}
                 </button>
                 <button
-                  id="tab-thirsty"
-                  onClick={() => setActiveTab('thirsty')}
+                  id="tab-flowering"
+                  onClick={() => setActiveTab('ไม้ดอก')}
                   className={`px-4 py-1.5 text-xs font-semibold rounded-full transition-all flex items-center gap-1.5 ${
-                    activeTab === 'thirsty'
+                    activeTab === 'ไม้ดอก'
                       ? 'bg-white text-[#05080c] shadow'
                       : 'text-gray-300 hover:text-white hover:bg-white/5'
                   }`}
                 >
-                  {currentT.tabThirsty}
-                  {thirstyCount > 0 && <span className="px-1.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400 text-[9px] font-bold">{thirstyCount}</span>}
+                  🌸 {lang === 'en' ? 'Flowering' : 'ไม้ดอก'}
                 </button>
                 <button
-                  id="tab-hungry"
-                  onClick={() => setActiveTab('hungry')}
+                  id="tab-herbs"
+                  onClick={() => setActiveTab('สมุนไพร')}
                   className={`px-4 py-1.5 text-xs font-semibold rounded-full transition-all flex items-center gap-1.5 ${
-                    activeTab === 'hungry'
+                    activeTab === 'สมุนไพร'
                       ? 'bg-white text-[#05080c] shadow'
                       : 'text-gray-300 hover:text-white hover:bg-white/5'
                   }`}
                 >
-                  {currentT.tabFeedDue}
-                  {hungryCount > 0 && <span className="px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-400 text-[9px] font-bold">{hungryCount}</span>}
+                  🌿 {lang === 'en' ? 'Herbs' : 'สมุนไพร'}
                 </button>
                 <button
-                  id="tab-healthy"
-                  onClick={() => setActiveTab('healthy')}
+                  id="tab-foliage"
+                  onClick={() => setActiveTab('ไม้ใบ')}
                   className={`px-4 py-1.5 text-xs font-semibold rounded-full transition-all flex items-center gap-1.5 ${
-                    activeTab === 'healthy'
+                    activeTab === 'ไม้ใบ'
                       ? 'bg-white text-[#05080c] shadow'
                       : 'text-gray-300 hover:text-white hover:bg-white/5'
                   }`}
                 >
-                  {currentT.tabHealthy}
+                  🍃 {lang === 'en' ? 'Foliage' : 'ไม้ใบ'}
+                </button>
+                <button
+                  id="tab-ornamental"
+                  onClick={() => setActiveTab('ไม้ประดับ')}
+                  className={`px-4 py-1.5 text-xs font-semibold rounded-full transition-all flex items-center gap-1.5 ${
+                    activeTab === 'ไม้ประดับ'
+                      ? 'bg-white text-[#05080c] shadow'
+                      : 'text-gray-300 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  🪴 {lang === 'en' ? 'Ornamental' : 'ไม้ประดับ'}
                 </button>
               </div>
 
@@ -651,17 +678,27 @@ export default function DashboardPage() {
               ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {filteredPlants.map((plant) => {
-                    const daysWater = getDaysSinceWatered(plant);
-                    const daysFeed = getDaysSinceFertilized(plant);
-                    
-                    const thirsty = isThirsty(plant);
-                    const hungry = isHungry(plant);
                     const selected = selectedPlant?.id === plant.id;
                     
-                    const waterPercent = Math.max(0, Math.min(100, Math.floor(((plant.wateringIntervalDays - Math.min(daysWater, plant.wateringIntervalDays)) / plant.wateringIntervalDays) * 100)));
-                    const feedPercent = plant.fertilizerType === 'ยังไม่ใส่' 
-                      ? 0 
-                      : Math.max(0, Math.min(100, Math.floor(((plant.fertilizingIntervalDays - Math.min(daysFeed, plant.fertilizingIntervalDays)) / plant.fertilizingIntervalDays) * 100)));
+                    const formatLastCareDate = (dateStr?: Date | string) => {
+                      if (!dateStr) return currentT.never;
+                      const date = new Date(dateStr);
+                      if (isCaredToday(date)) return lang === 'en' ? 'Today 🌟' : 'วันนี้ 🌟';
+                      
+                      // Check if yesterday
+                      const yesterday = new Date();
+                      yesterday.setDate(yesterday.getDate() - 1);
+                      if (date.toDateString() === yesterday.toDateString()) {
+                        return lang === 'en' ? 'Yesterday' : 'เมื่อวานนี้';
+                      }
+                      
+                      return date.toLocaleDateString(lang === 'en' ? 'en-US' : 'th-TH', {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      });
+                    };
 
                     return (
                       <div
@@ -693,66 +730,46 @@ export default function DashboardPage() {
                             </div>
                             
                             <div className="flex flex-col gap-1 items-end">
-                              {thirsty && (
-                                <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 animate-pulse">
-                                  {currentT.thirsty}
-                                </span>
-                              )}
-                              {hungry && (
-                                <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse">
-                                  {currentT.feedDue}
-                                </span>
-                              )}
-                              {!thirsty && !hungry && (
+                              {isCaredToday(plant.lastWateredAt) || isCaredToday(plant.lastFertilizedAt) ? (
                                 <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                                  {lang === 'en' ? 'Sated' : 'ชุ่มชื้น'}
+                                  {lang === 'en' ? 'Cared Today' : 'ดูแลแล้ววันนี้'}
+                                </span>
+                              ) : (
+                                <span className="text-[9px] font-bold px-2 py-0.5 rounded-full bg-white/5 text-gray-400 border border-white/10">
+                                  {lang === 'en' ? 'Pending Observation' : 'รอดำเนินการสังเกต'}
                                 </span>
                               )}
                             </div>
                           </div>
 
-                          {/* Dual Spatial Gauges */}
-                          <div className="mt-5 space-y-4">
-                            {/* Water Gauge */}
-                            <div className="space-y-1">
-                              <div className="flex justify-between items-center text-[10px] text-gray-400">
-                                <span className="flex items-center gap-1"><Droplet className="w-3 h-3 text-blue-400" /> {currentT.soilMoisture}</span>
-                                <span className="font-bold text-white font-mono">{waterPercent}%</span>
-                              </div>
-                              <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden border border-white/5">
-                                <div 
-                                  className={`h-full rounded-full transition-all duration-700 ${
-                                    waterPercent < 25 ? 'bg-gradient-to-r from-red-500 to-blue-400' : 'bg-gradient-to-r from-emerald-500 to-teal-400'
-                                  }`}
-                                  style={{ width: `${waterPercent}%` }}
-                                />
-                              </div>
+                          {/* Last Care Activity Metrics */}
+                          <div className="mt-5 space-y-3 bg-white/[0.02] border border-white/5 p-3 rounded-2xl">
+                            <div className="flex justify-between items-center text-xs">
+                              <span className="flex items-center gap-1.5 text-gray-400">
+                                <Droplet className="w-3.5 h-3.5 text-blue-400" />
+                                {currentT.lastWatered}
+                              </span>
+                              <span className="font-semibold text-white text-[11px] font-mono">
+                                {formatLastCareDate(plant.lastWateredAt)}
+                              </span>
                             </div>
 
-                            {/* Fertilizer Gauge */}
-                            {plant.fertilizerType !== 'ยังไม่ใส่' && (
-                              <div className="space-y-1">
-                                <div className="flex justify-between items-center text-[10px] text-gray-400">
-                                  <span className="flex items-center gap-1"><Sparkles className="w-3 h-3 text-amber-400" /> {currentT.nutrition} ({plant.fertilizerType})</span>
-                                  <span className="font-bold text-white font-mono">{feedPercent}%</span>
-                                </div>
-                                <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden border border-white/5">
-                                  <div 
-                                    className={`h-full rounded-full transition-all duration-700 ${
-                                      feedPercent < 25 ? 'bg-gradient-to-r from-red-500 to-amber-400' : 'bg-gradient-to-r from-emerald-500 to-amber-300'
-                                    }`}
-                                    style={{ width: `${feedPercent}%` }}
-                                  />
-                                </div>
-                              </div>
-                            )}
+                            <div className="flex justify-between items-center text-xs">
+                              <span className="flex items-center gap-1.5 text-gray-400">
+                                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                                {currentT.lastFertilized}
+                              </span>
+                              <span className="font-semibold text-white text-[11px] font-mono">
+                                {plant.fertilizerType === 'ยังไม่ใส่' ? '-' : formatLastCareDate(plant.lastFertilizedAt)}
+                              </span>
+                            </div>
                           </div>
                         </div>
 
                         {/* Interactive Care Actions footer */}
                         <div className="flex items-center justify-between border-t border-white/5 pt-4 mt-3">
-                          <span className="text-[10px] text-gray-400 font-semibold font-mono">
-                            {lang === 'en' ? 'W' : 'รดน้ำ'}: {plant.wateringIntervalDays}d | {lang === 'en' ? 'F' : 'ปุ๋ย'}: {plant.fertilizerType === 'ยังไม่ใส่' ? 'N/A' : `${plant.fertilizingIntervalDays}d`}
+                          <span className="text-[10px] text-gray-400 font-semibold font-mono flex items-center gap-1">
+                            🧪 {plant.fertilizerType === 'ยังไม่ใส่' ? '-' : plant.fertilizerType}
                           </span>
                           
                           <div className="flex items-center gap-2">
@@ -874,45 +891,7 @@ export default function DashboardPage() {
                     </div>
                   </div>
 
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <label htmlFor="watering-interval" className="text-xs font-semibold text-gray-300">{currentT.formWaterFreq}</label>
-                        <span className="text-[10px] font-bold text-blue-300 bg-blue-500/10 px-2.5 py-0.5 rounded-full border border-blue-500/25">
-                          {currentT.formEveryDays.replace('{days}', wateringInterval.toString())}
-                        </span>
-                      </div>
-                      <input
-                        id="watering-interval"
-                        type="range"
-                        min="1"
-                        max="30"
-                        value={wateringInterval}
-                        onChange={(e) => setWateringInterval(parseInt(e.target.value))}
-                        className="w-full accent-white bg-white/10 rounded-lg h-1.5"
-                      />
-                    </div>
 
-                    {fertilizerType !== 'ยังไม่ใส่' && (
-                      <div className="space-y-2">
-                        <div className="flex justify-between items-center">
-                          <label htmlFor="fertilizing-interval" className="text-xs font-semibold text-gray-300">{currentT.formFeedFreq}</label>
-                          <span className="text-[10px] font-bold text-amber-300 bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/25">
-                            {currentT.formEveryDays.replace('{days}', fertilizingInterval.toString())}
-                          </span>
-                        </div>
-                        <input
-                          id="fertilizing-interval"
-                          type="range"
-                          min="3"
-                          max="60"
-                          value={fertilizingInterval}
-                          onChange={(e) => setFertilizingInterval(parseInt(e.target.value))}
-                          className="w-full accent-white bg-white/10 rounded-lg h-1.5"
-                        />
-                      </div>
-                    )}
-                  </div>
 
                   {formError && <p className="text-xs text-red-400 font-semibold">{formError}</p>}
 
@@ -1028,69 +1007,89 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              {/* Schedules grid */}
-              <div className="relative z-10 grid grid-cols-2 gap-4">
-                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/5 space-y-1">
-                  <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest block">{currentT.waterSchedule}</span>
-                  <span className="text-xs font-bold block text-white">{currentT.formEveryDays.replace('{days}', selectedPlant.wateringIntervalDays.toString())}</span>
-                  <span className="text-[9px] text-gray-400 block font-semibold">
-                    {currentT.lastWater.replace('{time}', selectedPlant.lastWateredAt ? formatTimeAgo(selectedPlant.lastWateredAt) : currentT.never)}
-                  </span>
+              {/* Daily Care Track & Integrated Observation Note Editor */}
+              <div className="relative z-10 border-t border-white/5 pt-4 space-y-4">
+                <div>
+                  <h4 className="text-xs font-bold text-gray-300 flex items-center gap-1.5">
+                    📝 {currentT.dailyTrackTitle}
+                  </h4>
+                  <p className="text-[10px] text-gray-400 mt-0.5">{currentT.dailyTrackSubtitle}</p>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/5 space-y-1">
-                  <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest block">{currentT.feedSchedule}</span>
-                  <span className="text-xs font-bold block text-white">
-                    {selectedPlant.fertilizerType === 'ยังไม่ใส่' ? currentT.never : currentT.formEveryDays.replace('{days}', selectedPlant.fertilizingIntervalDays.toString())}
-                  </span>
-                  <span className="text-[9px] text-gray-400 block font-semibold">
-                    {currentT.lastFeed.replace('{time}', selectedPlant.lastFertilizedAt ? formatTimeAgo(selectedPlant.lastFertilizedAt) : currentT.never)}
-                  </span>
-                </div>
-              </div>
-
-              {/* Target schedule events */}
-              <div className="relative z-10 space-y-3.5 border-t border-white/5 pt-4">
-                <div className="flex items-center justify-between text-xs p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
-                  <span className="text-gray-300 flex items-center gap-1.5"><Droplet className="w-3.5 h-3.5 text-blue-400" /> {currentT.nextWater}</span>
-                  <span className="font-extrabold text-blue-300">
-                    {(() => {
-                      const days = getDaysSinceWatered(selectedPlant);
-                      const rem = selectedPlant.wateringIntervalDays - days;
-                      if (rem < 0) return currentT.overdue.replace('{days}', Math.abs(rem).toString());
-                      if (rem === 0) return currentT.dueToday;
-                      return currentT.inDays.replace('{days}', rem.toString());
-                    })()}
-                  </span>
-                </div>
-
-                {selectedPlant.fertilizerType !== 'ยังไม่ใส่' && (
-                  <div className="flex items-center justify-between text-xs p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
-                    <span className="text-gray-300 flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-amber-400" /> {currentT.nextFeed}</span>
-                    <span className="font-extrabold text-amber-300">
-                      {(() => {
-                        const days = getDaysSinceFertilized(selectedPlant);
-                        const rem = selectedPlant.fertilizingIntervalDays - days;
-                        if (rem < 0) return currentT.overdue.replace('{days}', Math.abs(rem).toString());
-                        if (rem === 0) return currentT.dueToday;
-                        return currentT.inDays.replace('{days}', rem.toString());
-                      })()}
-                    </span>
+                <form onSubmit={handleAddLog} className="space-y-3">
+                  {/* Activity Selector Pills */}
+                  <div className="space-y-1.5">
+                    <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest block">{currentT.selectCareType}</span>
+                    <div className="grid grid-cols-4 gap-1 bg-white/5 p-1 rounded-xl border border-white/5">
+                      <button
+                        type="button"
+                        onClick={() => setLogType('water')}
+                        className={`py-1 text-[10px] font-bold rounded-lg transition-all ${
+                          logType === 'water'
+                            ? 'bg-blue-500 text-blue-950 font-black'
+                            : 'text-gray-300 hover:text-white'
+                        }`}
+                      >
+                        💧 {lang === 'en' ? 'Water' : 'รดน้ำ'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setLogType('feed')}
+                        className={`py-1 text-[10px] font-bold rounded-lg transition-all ${
+                          logType === 'feed'
+                            ? 'bg-amber-500 text-amber-950 font-black'
+                            : 'text-gray-300 hover:text-white'
+                        }`}
+                      >
+                        🧪 {lang === 'en' ? 'Feed' : 'ใส่ปุ๋ย'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setLogType('prune')}
+                        className={`py-1 text-[10px] font-bold rounded-lg transition-all ${
+                          logType === 'prune'
+                            ? 'bg-emerald-500 text-emerald-950 font-black'
+                            : 'text-gray-300 hover:text-white'
+                        }`}
+                      >
+                        ✂️ {lang === 'en' ? 'Prune' : 'ตัดแต่ง'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setLogType('note')}
+                        className={`py-1 text-[10px] font-bold rounded-lg transition-all ${
+                          logType === 'note'
+                            ? 'bg-purple-500 text-purple-950 font-black'
+                            : 'text-gray-300 hover:text-white'
+                        }`}
+                      >
+                        📝 {lang === 'en' ? 'Note' : 'บันทึก'}
+                      </button>
+                    </div>
                   </div>
-                )}
-              </div>
 
-              {/* Log Event Trigger */}
-              <button
-                id="log-event-btn"
-                onClick={() => setIsLogsPanelOpen(true)}
-                className="relative z-10 w-full py-2.5 rounded-full bg-white text-[#03060a] font-bold text-xs shadow-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-1.5"
-              >
-                📝 {currentT.logActionBtn}
-              </button>
+                  {/* Notes input */}
+                  <div className="space-y-1">
+                    <textarea
+                      value={logNotes}
+                      onChange={(e) => setLogNotes(e.target.value)}
+                      placeholder={currentT.enterObsNote}
+                      rows={2}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-white/5 bg-white/5 focus:outline-none focus:bg-white/10 focus:ring-1 focus:ring-emerald-500 text-white resize-none placeholder:text-gray-500"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full py-2 rounded-full bg-white text-[#03060a] font-bold text-xs shadow-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-1"
+                  >
+                    {currentT.btnSubmitTrack}
+                  </button>
+                </form>
+              </div>
 
               {/* Care action history timeline */}
-              <div className="relative z-10 space-y-3.5">
+              <div className="relative z-10 space-y-3.5 border-t border-white/5 pt-4">
                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block leading-none">{currentT.logTimelineTitle}</span>
                 
                 {selectedPlantLogs.length === 0 ? (
@@ -1146,215 +1145,181 @@ export default function DashboardPage() {
             {/* Drawer line indicator */}
             <div className="w-12 h-1 bg-white/20 rounded-full mx-auto mb-2" onClick={() => setIsMobileDetailOpen(false)} />
 
-            {isLogsPanelOpen ? (
-              <div className="space-y-5 animate-fade-in">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h2 className="text-lg font-bold tracking-tight">{currentT.modalTitle}</h2>
-                    <p className="text-xs text-gray-400 mt-1">{currentT.modalSubtitle.replace('{name}', selectedPlant.name)}</p>
-                  </div>
-                  <button 
-                    onClick={() => setIsLogsPanelOpen(false)}
-                    className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gray-400 hover:text-white"
-                  >
-                    ✕
-                  </button>
+            <div className="space-y-5 animate-fade-in">
+
+              {/* Main details avatar display */}
+              <div className="p-6 rounded-3xl bg-white/5 border border-white/5 flex flex-col items-center text-center space-y-4 shadow-inner">
+                <div className="w-20 h-20 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-5xl shadow-2xl relative">
+                  {getPlantEmoji(selectedPlant.category)}
+                  <span className="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-emerald-500 border-2 border-[#03060a] flex items-center justify-center text-[10px] font-bold">✓</span>
+                </div>
+
+                <div>
+                  <h3 className="font-extrabold text-xl leading-tight">{selectedPlant.name}</h3>
+                  {selectedPlant.nickname && (
+                    <p className="text-xs text-emerald-400 italic font-medium mt-0.5">"{selectedPlant.nickname}"</p>
+                  )}
+                  <p className="text-[10px] text-gray-400 mt-1">Registry ID: {selectedPlant.id.substring(0, 8)}...</p>
+                </div>
+
+                {/* Specific custom formula details */}
+                <div className="w-full pt-3 border-t border-white/5">
+                  <span className="text-[10px] font-bold text-gray-400 block uppercase tracking-wider">{currentT.formulaReq}</span>
+                  <span className="text-xs font-semibold text-amber-300 block mt-0.5">
+                    {selectedPlant.fertilizerType || 'ยังไม่ใส่'}
+                  </span>
+                  {selectedPlant.fertilizerType !== 'ยังไม่ใส่' && (
+                    <p className="text-[10px] text-gray-400 italic mt-1 bg-white/5 p-2 rounded-xl border border-white/5">
+                      💡 {getFormulaTip(selectedPlant.fertilizerType)}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {/* Last Care Activity Metrics */}
+              <div className="space-y-3 bg-white/[0.02] border border-white/5 p-4 rounded-3xl">
+                <div className="flex justify-between items-center text-xs">
+                  <span className="flex items-center gap-1.5 text-gray-400">
+                    <Droplet className="w-3.5 h-3.5 text-blue-400" />
+                    {currentT.lastWatered}
+                  </span>
+                  <span className="font-semibold text-white text-[11px] font-mono">
+                    {selectedPlant.lastWateredAt ? new Date(selectedPlant.lastWateredAt).toLocaleDateString() : currentT.never}
+                  </span>
+                </div>
+
+                <div className="flex justify-between items-center text-xs">
+                  <span className="flex items-center gap-1.5 text-gray-400">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                    {currentT.lastFertilized}
+                  </span>
+                  <span className="font-semibold text-white text-[11px] font-mono">
+                    {selectedPlant.fertilizerType === 'ยังไม่ใส่' ? '-' : (selectedPlant.lastFertilizedAt ? new Date(selectedPlant.lastFertilizedAt).toLocaleDateString() : currentT.never)}
+                  </span>
+                </div>
+              </div>
+
+              {/* Daily Care Track & Integrated Observation Note Editor */}
+              <div className="border-t border-white/5 pt-4 space-y-4">
+                <div>
+                  <h4 className="text-xs font-bold text-gray-300 flex items-center gap-1.5">
+                    📝 {currentT.dailyTrackTitle}
+                  </h4>
+                  <p className="text-[10px] text-gray-400 mt-0.5">{currentT.dailyTrackSubtitle}</p>
                 </div>
 
                 <form onSubmit={async (e) => {
                   await handleAddLog(e);
-                  setIsLogsPanelOpen(false);
-                }} className="space-y-4">
+                  setIsMobileDetailOpen(false);
+                }} className="space-y-3">
+                  {/* Activity Selector Pills */}
                   <div className="space-y-1.5">
-                    <label htmlFor="mobile-log-action-type" className="text-xs font-semibold text-gray-300">
-                      {currentT.modalCareType}
-                    </label>
-                    <select
-                      id="mobile-log-action-type"
-                      value={logType}
-                      onChange={(e) => setLogType(e.target.value)}
-                      className="w-full px-4 py-2.5 text-xs rounded-xl border border-white/5 bg-[#0e1622] text-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
-                    >
-                      <option value="water">{currentT.logWater}</option>
-                      <option value="feed">{currentT.logFeed}</option>
-                      <option value="prune">{currentT.logPrune}</option>
-                      <option value="repot">{currentT.logRepot}</option>
-                    </select>
+                    <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest block">{currentT.selectCareType}</span>
+                    <div className="grid grid-cols-4 gap-1 bg-white/5 p-1 rounded-xl border border-white/5">
+                      <button
+                        type="button"
+                        onClick={() => setLogType('water')}
+                        className={`py-1 text-[10px] font-bold rounded-lg transition-all ${
+                          logType === 'water'
+                            ? 'bg-blue-500 text-blue-950 font-black'
+                            : 'text-gray-300 hover:text-white'
+                        }`}
+                      >
+                        💧 {lang === 'en' ? 'Water' : 'รดน้ำ'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setLogType('feed')}
+                        className={`py-1 text-[10px] font-bold rounded-lg transition-all ${
+                          logType === 'feed'
+                            ? 'bg-amber-500 text-amber-950 font-black'
+                            : 'text-gray-300 hover:text-white'
+                        }`}
+                      >
+                        🧪 {lang === 'en' ? 'Feed' : 'ใส่ปุ๋ย'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setLogType('prune')}
+                        className={`py-1 text-[10px] font-bold rounded-lg transition-all ${
+                          logType === 'prune'
+                            ? 'bg-emerald-500 text-emerald-950 font-black'
+                            : 'text-gray-300 hover:text-white'
+                        }`}
+                      >
+                        ✂️ {lang === 'en' ? 'Prune' : 'ตัดแต่ง'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setLogType('note')}
+                        className={`py-1 text-[10px] font-bold rounded-lg transition-all ${
+                          logType === 'note'
+                            ? 'bg-purple-500 text-purple-950 font-black'
+                            : 'text-gray-300 hover:text-white'
+                        }`}
+                      >
+                        📝 {lang === 'en' ? 'Note' : 'บันทึก'}
+                      </button>
+                    </div>
                   </div>
 
-                  <div className="space-y-1.5">
-                    <label htmlFor="mobile-log-notes" className="text-xs font-semibold text-gray-300">
-                      {currentT.modalNotes}
-                    </label>
+                  {/* Notes input */}
+                  <div className="space-y-1">
                     <textarea
-                      id="mobile-log-notes"
-                      placeholder="e.g. Added 100ml water, soil is moist..."
                       value={logNotes}
                       onChange={(e) => setLogNotes(e.target.value)}
-                      rows={3}
-                      className="w-full px-4 py-2.5 text-xs rounded-xl border border-white/5 bg-white/5 text-white placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 resize-none"
+                      placeholder={currentT.enterObsNote}
+                      rows={2}
+                      className="w-full px-3 py-2 text-xs rounded-xl border border-white/5 bg-white/5 focus:outline-none focus:bg-white/10 focus:ring-1 focus:ring-emerald-500 text-white resize-none placeholder:text-gray-500"
                     />
                   </div>
 
-                  <div className="flex gap-3">
-                    <button
-                      type="button"
-                      onClick={() => setIsLogsPanelOpen(false)}
-                      className="flex-1 py-2.5 rounded-full bg-white/10 text-white font-bold text-xs hover:bg-white/15 transition-all"
-                    >
-                      {currentT.formCancel}
-                    </button>
-                    <button
-                      type="submit"
-                      className="flex-1 py-2.5 rounded-full bg-white text-[#03060a] font-bold text-xs shadow-xl transition-all"
-                    >
-                      {currentT.modalLogEntry}
-                    </button>
-                  </div>
+                  <button
+                    type="submit"
+                    className="w-full py-2 rounded-full bg-white text-[#03060a] font-bold text-xs shadow-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-1"
+                  >
+                    {currentT.btnSubmitTrack}
+                  </button>
                 </form>
               </div>
-            ) : (
-              <>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h2 className="text-lg font-bold tracking-tight">{currentT.hologramTitle}</h2>
-                    <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold mt-0.5">{currentT.hologramSubtitle}</p>
-                  </div>
-                  <button 
-                    onClick={() => setIsMobileDetailOpen(false)}
-                    className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-gray-400 hover:text-white"
-                  >
-                    ✕
-                  </button>
-                </div>
 
-                {/* Main details avatar display */}
-                <div className="p-6 rounded-3xl bg-white/5 border border-white/5 flex flex-col items-center text-center space-y-4 shadow-inner">
-                  <div className="w-20 h-20 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-5xl shadow-2xl relative">
-                    {getPlantEmoji(selectedPlant.category)}
-                    <span className="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-emerald-500 border-2 border-[#03060a] flex items-center justify-center text-[10px] font-bold">✓</span>
-                  </div>
-
-                  <div>
-                    <h3 className="font-extrabold text-xl leading-tight">{selectedPlant.name}</h3>
-                    {selectedPlant.nickname && (
-                      <p className="text-xs text-emerald-400 italic font-medium mt-0.5">"{selectedPlant.nickname}"</p>
-                    )}
-                    <p className="text-[10px] text-gray-400 mt-1">Registry ID: {selectedPlant.id.substring(0, 8)}...</p>
-                  </div>
-
-                  {/* Specific custom formula details */}
-                  <div className="w-full pt-3 border-t border-white/5">
-                    <span className="text-[10px] font-bold text-gray-400 block uppercase tracking-wider">{currentT.formulaReq}</span>
-                    <span className="text-xs font-semibold text-amber-300 block mt-0.5">
-                      {selectedPlant.fertilizerType || 'ยังไม่ใส่'}
-                    </span>
-                    {selectedPlant.fertilizerType !== 'ยังไม่ใส่' && (
-                      <p className="text-[10px] text-gray-400 italic mt-1 bg-white/5 p-2 rounded-xl border border-white/5">
-                        💡 {getFormulaTip(selectedPlant.fertilizerType)}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                {/* Schedules grid */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="p-3.5 rounded-2xl bg-white/5 border border-white/5 space-y-1">
-                    <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest block">{currentT.waterSchedule}</span>
-                    <span className="text-xs font-bold block text-white">{currentT.formEveryDays.replace('{days}', selectedPlant.wateringIntervalDays.toString())}</span>
-                    <span className="text-[9px] text-gray-400 block font-semibold">
-                      {currentT.lastWater.replace('{time}', selectedPlant.lastWateredAt ? formatTimeAgo(selectedPlant.lastWateredAt) : currentT.never)}
-                    </span>
-                  </div>
-
-                  <div className="p-3.5 rounded-2xl bg-white/5 border border-white/5 space-y-1">
-                    <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest block">{currentT.feedSchedule}</span>
-                    <span className="text-xs font-bold block text-white">
-                      {selectedPlant.fertilizerType === 'ยังไม่ใส่' ? currentT.never : currentT.formEveryDays.replace('{days}', selectedPlant.fertilizingIntervalDays.toString())}
-                    </span>
-                    <span className="text-[9px] text-gray-400 block font-semibold">
-                      {currentT.lastFeed.replace('{time}', selectedPlant.lastFertilizedAt ? formatTimeAgo(selectedPlant.lastFertilizedAt) : currentT.never)}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Target schedule events */}
-                <div className="space-y-3.5 border-t border-white/5 pt-4">
-                  <div className="flex items-center justify-between text-xs p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
-                    <span className="text-gray-300 flex items-center gap-1.5"><Droplet className="w-3.5 h-3.5 text-blue-400" /> {currentT.nextWater}</span>
-                    <span className="font-extrabold text-blue-300">
-                      {(() => {
-                        const days = getDaysSinceWatered(selectedPlant);
-                        const rem = selectedPlant.wateringIntervalDays - days;
-                        if (rem < 0) return currentT.overdue.replace('{days}', Math.abs(rem).toString());
-                        if (rem === 0) return currentT.dueToday;
-                        return currentT.inDays.replace('{days}', rem.toString());
-                      })()}
-                    </span>
-                  </div>
-
-                  {selectedPlant.fertilizerType !== 'ยังไม่ใส่' && (
-                    <div className="flex items-center justify-between text-xs p-3.5 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all">
-                      <span className="text-gray-300 flex items-center gap-1.5"><Sparkles className="w-3.5 h-3.5 text-amber-400" /> {currentT.nextFeed}</span>
-                      <span className="font-extrabold text-amber-300">
-                        {(() => {
-                          const days = getDaysSinceFertilized(selectedPlant);
-                          const rem = selectedPlant.fertilizingIntervalDays - days;
-                          if (rem < 0) return currentT.overdue.replace('{days}', Math.abs(rem).toString());
-                          if (rem === 0) return currentT.dueToday;
-                          return currentT.inDays.replace('{days}', rem.toString());
-                        })()}
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Log Event Trigger */}
-                <button
-                  onClick={() => { setIsLogsPanelOpen(true); }}
-                  className="w-full py-2.5 rounded-full bg-white text-[#03060a] font-bold text-xs shadow-lg hover:scale-[1.02] transition-all flex items-center justify-center gap-1.5"
-                >
-                  📝 {currentT.logActionBtn}
-                </button>
-
-                {/* Care action history timeline */}
-                <div className="space-y-3.5">
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block leading-none">{currentT.logTimelineTitle}</span>
-                  
-                  {selectedPlantLogs.length === 0 ? (
-                    <p className="text-xs text-gray-400 italic bg-white/5 p-4 rounded-2xl border border-white/5">
-                      {currentT.noLogs}
-                    </p>
-                  ) : (
-                    <div className="space-y-2.5 max-h-52 overflow-y-auto pr-1">
-                      {selectedPlantLogs.map((log) => (
-                        <div 
-                          key={log.id} 
-                          className="p-3.5 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-between text-xs hover:bg-white/10 hover:border-white/15 transition-all"
-                        >
-                          <div className="flex items-center gap-3">
-                            <span className="text-lg">
-                              {log.actionType === 'water' ? '💧' : log.actionType === 'feed' ? '🧪' : log.actionType === 'prune' ? '✂️' : '🪴'}
-                            </span>
-                            <div>
-                              <p className="font-bold text-gray-200 capitalize">
-                                {log.actionType === 'feed' ? currentT.logFertilized : log.actionType === 'water' ? currentT.logWatered : log.actionType}
-                              </p>
-                              {log.notes && (
-                                <p className="text-[10px] text-gray-400 italic mt-0.5">"{log.notes}"</p>
-                              )}
-                            </div>
-                          </div>
-                          <span className="text-[10px] text-gray-400 font-mono">
-                            {formatTimeAgo(log.loggedAt)}
+              {/* Care action history timeline */}
+              <div className="space-y-3.5 border-t border-white/5 pt-4">
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block leading-none">{currentT.logTimelineTitle}</span>
+                
+                {selectedPlantLogs.length === 0 ? (
+                  <p className="text-xs text-gray-400 italic bg-white/5 p-4 rounded-2xl border border-white/5">
+                    {currentT.noLogs}
+                  </p>
+                ) : (
+                  <div className="space-y-2.5 max-h-52 overflow-y-auto pr-1">
+                    {selectedPlantLogs.map((log) => (
+                      <div 
+                        key={log.id} 
+                        className="p-3.5 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-between text-xs hover:bg-white/10 hover:border-white/15 transition-all"
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className="text-lg">
+                            {log.actionType === 'water' ? '💧' : log.actionType === 'feed' ? '🧪' : log.actionType === 'prune' ? '✂️' : '🪴'}
                           </span>
+                          <div>
+                            <p className="font-bold text-gray-200 capitalize">
+                              {log.actionType === 'feed' ? currentT.logFertilized : log.actionType === 'water' ? currentT.logWatered : log.actionType}
+                            </p>
+                            {log.notes && (
+                              <p className="text-[10px] text-gray-400 italic mt-0.5">"{log.notes}"</p>
+                            )}
+                          </div>
                         </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </>
-            )}
+                        <span className="text-[10px] text-gray-400 font-mono">
+                          {formatTimeAgo(log.loggedAt)}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}
